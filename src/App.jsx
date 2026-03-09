@@ -397,24 +397,6 @@ const handleAiSuggest = async () => {
 };
 
 
-
-  const handleAiAnalyze = async () => {
-    const selectedAccNames = accessories
-      .filter((a) => selectedAccessoryIds.includes(a.id))
-      .map((a) => a.name)
-      .join(', ');
-    const prompt = `Analise a viabilidade comercial desta mala:
-    - Modelo: ${selectedModel.name}
-    - Fábrica: ${currentSupplier.name}
-    - Custo FOB Final: $ ${totalUsd.toFixed(2)}
-    - Acessórios: ${selectedAccNames || 'Configuração Básica'}
-    
-    Explique brevemente (em 3 frases) se esse preço está competitivo para o mercado brasileiro e qual o diferencial dessa configuração.`;
-
-    const result = await callGemini(prompt);
-    if (result) setAiAnalysis(result);
-  };
-
   // --- CRUD HANDLERS ---
   const handleAddFactory = (e) => {
     e.preventDefault();
